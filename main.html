@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>요리 수익 계산기</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="images/png" href="png/logo.png">
+</head>
+<body>
+  <header class="wrap">
+    <h1>요리 수익 계산기</h1>
+    <p class="sub">
+      스태미나를 통한 요리 수익 계산기
+    </p>
+  </header>
+
+  <main class="wrap grid">
+    <!-- LEFT: 입력 -->
+    <section class="card">
+      <h2>인원 수</h2>
+
+      <div class="grid2">
+        <div>
+          <label for="peopleCount">인원 수</label>
+          <input id="peopleCount" type="number" min="1" max="50" step="1" value="4" />
+        </div>
+        <div class="row bottom">
+          <button id="applyPeople" class="btn" type="button">인원 수 적용</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card inner">
+        <h3>마을원별 설정</h3>
+        <div id="peopleWrap" class="peopleWrap"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 설정 묶음 -->
+      <div class="settingsStack">
+        <!-- 왕작물 + 베이스/요리 합친 카드 -->
+        <div class="card inner">
+          <h3>설정</h3>
+
+          <div class="grid2">
+            <div>
+              <label for="giantProbPct">왕 작물 드롭 확률(%)</label>
+              <input id="giantProbPct" type="number" min="0" max="100" step="0.01" value="3" />
+            </div>
+            <div>
+              <label for="cookPrice">요리 가격(개당)</label>
+              <input id="cookPrice" type="number" min="0" step="1" value="3300" />
+            </div>
+          </div>
+
+          <div class="divider small"></div>
+
+          <h4>요리 1개당 필요한 베이스 개수</h4>
+          <div class="grid3">
+            <div>
+              <label for="bTomato">토마토 베이스</label>
+              <input id="bTomato" type="number" min="0" step="1" value="1" />
+            </div>
+            <div>
+              <label for="bOnion">양파 베이스</label>
+              <input id="bOnion" type="number" min="0" step="1" value="1" />
+            </div>
+            <div>
+              <label for="bGarlic">마늘 베이스</label>
+              <input id="bGarlic" type="number" min="0" step="1" value="1" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 최종 배율 카드(돈/솥 분리) -->
+        <div class="card inner">
+          <h3>최종 배율</h3>
+
+          <div class="grid2">
+            <div>
+              <label for="moneyLevel">돈 좀 벌어볼까</label>
+              <select id="moneyLevel"></select>
+              <div class="pctBadge" id="moneyPct">+0%</div>
+            </div>
+
+            <div>
+              <label for="potLevel">한 솥 가득</label>
+              <select id="potLevel"></select>
+              <div class="pctBadge" id="potPct">+0%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: 결과 -->
+ <section class="card">
+      <h2>결과</h2>
+
+      <div class="resultBig" id="finalPrice">0 원</div>
+      <div class="resultLabel">최종 가격</div>
+
+      <div class="resultRow">
+        <div class="stat">
+          <div class="statLabel">가능한 요리 갯수</div>
+          <div class="statValue" id="cooksPossible">0</div>
+        </div>
+        <div class="stat">
+          <div class="statLabel">배율 적용 전 요리 가격</div>
+          <div class="statValue" id="grossPrice">0 원</div>
+        </div>
+      </div>
+
+      <!-- ✅ 추가: 전체 씨앗 + 씨앗 세트 -->
+      <div class="resultRow">
+        <div class="stat">
+          <div class="statLabel">전체 씨앗 갯수</div>
+          <div class="statValue" id="totalSeeds">0</div>
+        </div>
+        <div class="stat">
+          <div class="statLabel">씨앗 세트 (64개=1세트)</div>
+          <div class="statValue" id="seedSets">0세트 + 0개</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
